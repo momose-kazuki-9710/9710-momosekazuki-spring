@@ -29,16 +29,16 @@ public class HelloController {
 	
 //3.
 //	input(入力画面)を開けるようにする
-	@GetMapping("/input")
+	@GetMapping("/hello")
 	public String input() {
 		
-//		input.hitml を表示させる（htmlを抜いて記述する必要あり）
+//		input.html を表示させる（htmlを抜いて記述する必要あり）
 		return "input";
 	}
 	
 	
-	@PostMapping("/input")
-	public String inputname(
+	@PostMapping("/hello")
+	public String show(
 		@RequestParam(name = "name") String name,
 		@RequestParam(name = "age") Integer age,
 		@RequestParam(name = "hobby") String hobby,
@@ -52,10 +52,9 @@ public class HelloController {
 		model.addAttribute("age", age);
 		model.addAttribute("hobby", hobby);
 		
-		int adult = 18;
 		String memo = "";
 		if (age >= 20) {
-			adult = age - 18; 
+			int adult = age - 18; 
 			memo = "成人してから" + adult + "年たちました";
 		}
 		else {
@@ -69,13 +68,13 @@ public class HelloController {
 	}
 	
 	//3.
-//	input(入力画面)を開けるようにする
-	@GetMapping("/hello")
-	public String hello() {
-		
-//		input.hitml を表示させる（htmlを抜いて記述する必要あり）
-		return "hello";
-	}
+////	input(入力画面)を開けるようにする
+//	@GetMapping("/hello")
+//	public String hello() {
+//		
+////		input.hitml を表示させる（htmlを抜いて記述する必要あり）
+//		return "hello";
+//	}
 
 
 }
