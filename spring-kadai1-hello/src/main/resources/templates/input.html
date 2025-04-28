@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Input</title>
+</head>
+<body>
+	<!---->
+	<!--見出し-->
+	<h1>入力ファーム</h1>
+	
+	<!--入力画面は「Form」で作る-->
+	<!--「method」→@PostMapping、
+		「action」→("/input")　　で指定-->
+	<form method = "post" action = "/input">
+		
+		<!--名前入力-->
+		<!--input や textarea タグに「name属性」を設置すると、Javaにデータを送信できる-->
+		<label>名前：</label><br>
+		<input type = "text" name = "name" /><br>
+		<!--　↑これが入力されたもの　-->
+		
+		<!--年齢入力-->
+		<label>年齢：</label><br>
+		<input type = "number" name = "age" /><br>
+		
+		<!--趣味入力-->
+		<label>趣味：</label><br>
+		<textarea name = "hobby"></textarea> <br>
+	
+		
+		<!--送信ボタン-->
+		<button>送信</button>
+		
+	</form>
+	
+</body>
+</html>

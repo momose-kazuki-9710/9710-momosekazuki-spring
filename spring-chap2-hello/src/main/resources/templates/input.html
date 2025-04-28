@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!---->
+	<!--見出し-->
+	<h1>入力ファーム</h1>
+	
+	<!--入力フォーム-->
+	<!--フォームタグは「method」と「action」を使って、Javaの指定メソッドに処理を飛ばせる-->
+	<!--     ↑「method」→@PostMapping、「action」→("/input")で指定-->
+		  
+	<!--→何かしらの入力ファームは「fromタグを使う」のが通例-->
+	<form method = "post" action = "/input">
+		<!--名前の入力箇所-->
+		<label>名前：</label>
+		<!--input や textarea タグに「name属性」を設置すると、Javaにデータを送信できる-->
+		<input type = "text" name = "name" />
+		<!--	↑これが入力されたもの-->
+		
+		<!--送信ボタン-->
+		<button>送信</button>
+		
+	</form>
+
+</body>
+</html>
