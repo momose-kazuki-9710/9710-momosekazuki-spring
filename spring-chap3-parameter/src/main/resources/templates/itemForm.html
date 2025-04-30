@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品登録</title>
+</head>
+<body>
+	<h1>商品登録</h1>
+	
+	<!--入力フォーム-->
+	<!--Postリクエストでactionは/item-->
+	<!--placeholder : 「何も入力していない状態」の時に薄い色で表示する文言-->
+	
+	<form method="post" action="/item">
+		<tabel>
+			<input type="text" name="name" placeholder="商品名"><br>
+			<input type="number" name="price" placeholder="価格"><br>
+			
+			
+			<!--ラジオボタン の設置 ← 切り替え用の選択肢を作れる-->
+			<p>
+				<!--書き方　input type="radio" で name は同じもの value はすべて異なるものを使う-->
+				<input type="radio" name="janru" value="1">家電製品
+				<input type="radio" name="janru" value="2">文房具
+			</p>
+			
+			
+			<!--チェックボックス の設置 ← 複数選択可能なの選択肢を作れる-->
+			<p>
+				<!--書き方　input type="checkbox" で name は同じもの value はすべて異なるものを使う-->
+				<input type="checkbox" name="color" value="red">赤
+				<input type="checkbox" name="color" value="white">白
+				<input type="checkbox" name="color" value="black">黒
+			</p>
+			
+			
+			<button>送信</button>
+		</tabel>
+		
+	</form>
+
+</body>
+</html>

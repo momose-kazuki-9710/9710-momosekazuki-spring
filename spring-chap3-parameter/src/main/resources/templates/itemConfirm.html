@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品情報</title>
+</head>
+<body>
+	<h1>商品情報</h1>
+	
+	<label>商品名：</label>[[${name}]] <br>
+	<label>価格：</label>[[${price}]] 円<br>
+	
+	<!--ラジオボタンの情報-->
+	<!--if分も書ける！ → th:if="" で書く-->
+	<th:block th:if="${janru == 1}">
+		ジャンル：家電製品 <br>
+	</th:block>
+	<th:block th:if="${janru == 2}">
+		ジャンル：文房具 <br>
+	</th:block>
+	
+	<!--チェックボックスの情報-->
+	<!--if分も書ける！ → th:if="" で書く-->
+	<th:block th:each="color:${colorList}">
+		[[${color}]]
+		
+	</th:block>
+
+</body>
+</html>

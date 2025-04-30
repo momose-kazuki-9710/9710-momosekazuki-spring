@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>お問い合わせ</title>
+</head>
+<body>
+	<h1>研修お問い合わせ</h1>
+
+	<ul th:if="${!warningtList.isEmpty()}">
+		<li th:each="warning:${warningtList}">
+			[[${warning}]]
+		</li>
+	</ul>
+	
+	<form method="post" action="/contact">
+	<table border="1">
+		<tr>
+			<th>種別</th>
+			<td>
+				<input type="radio" name="genre" value="1">資料請求<br>
+				<input type="radio" name="genre" value="2">見積り依頼
+			</td>
+		</tr>
+		<tr>
+			<th>言語[必須]</th>
+			<td>
+				<input type="checkbox" name="language" value="Java">Java研修
+				<input type="checkbox" name="language" value="PHP">PHP研修
+				<input type="checkbox" name="language" value="Python">Python研修
+			</td>
+		</tr>
+		<tr>
+			<th>お名前[必須]</th>
+			<td><input type = "text" name = "name" /></td>
+		</tr>
+		<tr>
+			<th>メールアドレス[必須]</th>
+			<td><input type = "text" name = "email" /></td>
+		</tr>
+	</table>
+	<p>
+		<button>送信</button>
+	</p>
+	
+	</form>
+</body>
+</html>
