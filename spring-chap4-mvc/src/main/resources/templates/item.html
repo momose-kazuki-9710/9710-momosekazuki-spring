@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Item</title>
+</head>
+<body>
+
+	<!--見出し-->
+	<h1>商品</h1>
+	
+	<!--入力フォーム-->
+	<form method="post" action="item">
+		<input type="text" name="name" placeholder="商品名" value="${初期値}"><br>
+		<input type="number" name="price" placeholder="価格">
+		
+		<p>
+			<button>登録</button>		
+		</p>
+	</form>
+	
+	<!--区切り線-->
+	<hr>
+	
+	<!-- item が html で扱えるようになっている時だけ表示-->
+	<th:block th:if="${item1 != null}">
+		<h2>次の商品を登録しました</h2>
+		[[${item1.name}]]：[[${item1.price}]]円
+	</th:block>
+	
+</body>
+</html>

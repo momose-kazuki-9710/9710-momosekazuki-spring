@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>会員登録確認</title>
+</head>
+<body>
+	<h1>登録内容確認</h1>
+
+	<span>以下の内容で登録します</span>
+	<table border="1" th:if="${account != null}">	
+		<tr>
+			<th>名前</th>
+			<td >
+				[[${account.name}]]
+			</td>
+		</tr>
+				
+		<tr>
+			<th>メールアドレス</th>
+			<td>
+				[[${account.email}]]
+			</td>
+		</tr>
+				
+		<tr>
+			<th>パスワード</th>
+			<td>
+				[[${account.pass}]]
+			</td>
+		</tr>
+	</table>
+	
+	<form method="post" action="/account">
+		<input type = "hidden" name = "name" th:value="${account.name}"/>
+		<input type = "hidden" name = "email" th:value="${account.email}"/>
+		<input type = "hidden" name = "pass" th:value="${account.pass}"/>
+		
+		<button>登録</button>
+	</form>
+</body>
+</html>

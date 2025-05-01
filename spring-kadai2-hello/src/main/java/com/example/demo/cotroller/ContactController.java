@@ -1,5 +1,6 @@
 package com.example.demo.cotroller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,20 @@ public class ContactController {
 		@RequestParam(name = "name") String name,
 		@RequestParam(name = "email") String email,
 		
+		//ラジオボタンの選択した値の受け取り
+		//name = genre の value を値として受け取る
+		@RequestParam(name = "genre") Integer genre,
+		
+		//チェックボックスの選択した値の受け取り
+		// →name="language"の選択されたvalueの値を 「配列」 として受け取る
+		@RequestParam(name = "language") List<String>languageList,
+		
+		@RequestParam(name = "detail") String detail,
+		
+		//日付の受け取り
+		@RequestParam(name = "date") LocalDate date,
+		
+		
 		Model model
 			) {
 		List<String> warningtList = new ArrayList<>();
@@ -36,6 +51,8 @@ public class ContactController {
 			
 			warningName = "名前は必須です";
 			warningtList.add(warningName);
+			//一発で ↓ これでもいい
+			//warningtList.add("名前は必須です");
 		}
 		else if(name.length() > 20) {
 			warningName = "名前は20字以内で入力してください";
@@ -55,6 +72,10 @@ public class ContactController {
 		if(warningtList.size() == 0) {
 			model.addAttribute("name", name);
 			model.addAttribute("email", email);
+			model.addAttribute("genre",genre);
+			model.addAttribute("languageList",languageList);
+			model.addAttribute("detail",detail);
+			model.addAttribute("date",date);
 			return "contactResult";
 		}
 		
@@ -63,6 +84,8 @@ public class ContactController {
 //			return "contactForm";
 //		}
 		model.addAttribute("warningtList", warningtList);
+		
+
 		return "contactForm";
 		
 		

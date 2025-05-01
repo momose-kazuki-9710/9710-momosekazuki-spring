@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+</head>
+<body>
+
+	<!--見出し-->
+	<h1>商品一覧</h1>
+	
+	<!--商品テーブル-->
+	<table border="1">
+		<!--ヘッダー行-->
+		<tr>
+			<th>ID</th>
+			<th>カテゴリーID</th>
+			<th>商品名</th>
+			<th>価格</th>
+		</tr>
+		
+		<!--データ一覧-->
+		<tr th:each="item : ${itemList}">
+			<td>[[${item.id}]]</td>
+			<td>[[${item.categoryId}]]</td>
+			<td>[[${item.name}]]</td>
+			<td>[[${item.price}]]円</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

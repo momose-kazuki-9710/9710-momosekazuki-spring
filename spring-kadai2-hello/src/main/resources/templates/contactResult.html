@@ -5,10 +5,39 @@
 <title>研修お問い合わせ</title>
 </head>
 <body>
-	<h1>お問い合わせありがとうございます。</h1>
+	<!--<h1>お問い合わせありがとうございます。</h1>-->
+
+	<!--見出しを選択によって表示-->
+	<h1 th:if="${genre == 1}">資料請求ありがとうございます</h1>
+	<h1 th:if="${genre == 2}">見積り依頼ありがとうございます</h1>
+
 
 	<span>以下の内容にて受け付けました</span>
+	
+	<!--表-->
 	<table border="1">
+		
+		<!-- チェックボックス → 中身は配列 → each文で生成 -->
+		<tr>
+			<th>言語</th>
+			<td>
+				<th:block th:each="language : ${languageList}">
+				[[${language}]],
+				</th:block>
+			</td>
+		</tr>
+		
+		<tr>
+			<th>詳細内容</th>
+			<td th:text="${detail}"></td>
+			<!--「th:text="${}"」 ← Thymeleaf で表示する方法-->
+		</tr>
+		
+		<tr>
+			<th>実施予定日</th>
+			<td th:text="${date}"></td>
+		</tr>
+		
 		<tr>
 			<th>お名前</th>
 			<td>[[${name}]]</td>

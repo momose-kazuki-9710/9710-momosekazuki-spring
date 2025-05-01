@@ -7,7 +7,7 @@
 <body>
 	<h1>研修お問い合わせ</h1>
 
-	<ul th:if="${!warningtList.isEmpty()}">
+	<ul th:if="${warningtList != null && warningtList.size > 0}">
 		<li th:each="warning:${warningtList}">
 			[[${warning}]]
 		</li>
@@ -18,17 +18,29 @@
 		<tr>
 			<th>種別</th>
 			<td>
-				<input type="radio" name="genre" value="1">資料請求<br>
-				<input type="radio" name="genre" value="2">見積り依頼
+				<input type="radio" name="genre" value="1" id="genre_1">
+				<label for="genre_1">資料請求</label><br>
+				<!--ラベルを付けてあげると、文字選択もできるようになる-->
+				<input type="radio" name="genre" value="2" id="genre_2">
+				<label for="genre_2">見積り依頼</label>
 			</td>
 		</tr>
 		<tr>
 			<th>言語[必須]</th>
 			<td>
-				<input type="checkbox" name="language" value="Java">Java研修
-				<input type="checkbox" name="language" value="PHP">PHP研修
+				<input type="checkbox" name="language" value="Java">Java研修<br>
+				<input type="checkbox" name="language" value="PHP">PHP研修<br>
 				<input type="checkbox" name="language" value="Python">Python研修
 			</td>
+		</tr>
+		<tr>
+			<th>詳細内容</th>
+			<td><textarea name = "detail"></textarea></td>
+		</tr>
+		<tr>
+			<th>実施予定日</th>
+			<td><input type="date" name="date"></td>
+			<!--もし初期値が欲しいときは value="2023-03-02 を追加-->
 		</tr>
 		<tr>
 			<th>お名前[必須]</th>
