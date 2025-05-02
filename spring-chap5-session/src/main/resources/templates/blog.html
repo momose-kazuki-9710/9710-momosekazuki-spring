@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ブログ</title>
+</head>
+<body>
+	<h1>日記</h1>
+	
+	<!--<p>-->
+	<!--	こんにちは、[[${name}]]さん-->
+	<!--</p>-->
+	<!--<th:block th:if="${account != null}">-->
+	<!--	こんにちは、[[account.name]]さん-->
+	<!--</th:block>-->
+
+	<!--セッション用のクラスを出力-->
+	<!--[[${@account.name}]]のように@が必要-->
+	<!--「@セッション用のクラス名.フィールド名」-->
+	こんにちは、[[${@account.name}]]さん
+	
+	<br>
+	<a href="logout">ログアウト</a>
+	
+</body>
+</html>

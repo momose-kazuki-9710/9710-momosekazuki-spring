@@ -32,12 +32,13 @@ public class ContactController {
 		
 		//チェックボックスの選択した値の受け取り
 		// →name="language"の選択されたvalueの値を 「配列」 として受け取る
-		@RequestParam(name = "language") List<String>languageList,
+		//defaultValue がないと、内にも線tか失い時にエラーになる。
+		@RequestParam(name = "language" ,defaultValue="") List<String>languageList,
 		
 		@RequestParam(name = "detail") String detail,
 		
 		//日付の受け取り
-		@RequestParam(name = "date") LocalDate date,
+		@RequestParam(name = "dueDate") LocalDate dueDate,
 		
 		
 		Model model
@@ -67,7 +68,21 @@ public class ContactController {
 		}
 //			model.addAttribute("warning", warningName);
 //			return "contactForm";
-//		}
+//		
+		
+		if(languageList ==null || languageList.size() == 0) {
+			
+			warningtList.add("言語は必須です");
+		}
+		
+		if(dueDate != null && !dueDate.isAfter(LocalDate.now())) {
+			warningtList.add("実施予定日は翌日以降を選択してください");
+		}
+		
+		
+		
+		
+		
 //		if(warningtList == null || warningtList.size() ==0) {
 		if(warningtList.size() == 0) {
 			model.addAttribute("name", name);
@@ -75,7 +90,7 @@ public class ContactController {
 			model.addAttribute("genre",genre);
 			model.addAttribute("languageList",languageList);
 			model.addAttribute("detail",detail);
-			model.addAttribute("date",date);
+			model.addAttribute("dueDate",dueDate);
 			return "contactResult";
 		}
 		

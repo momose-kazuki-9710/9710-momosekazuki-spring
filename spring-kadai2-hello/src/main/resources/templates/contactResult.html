@@ -21,7 +21,7 @@
 		<tr>
 			<th>言語</th>
 			<td>
-				<th:block th:each="language : ${languageList}">
+				<th:block th:each="lang : ${languageList}">
 				[[${language}]],
 				</th:block>
 			</td>
@@ -35,7 +35,7 @@
 		
 		<tr>
 			<th>実施予定日</th>
-			<td th:text="${date}"></td>
+			<td th:text="${dueDate}"></td>
 		</tr>
 		
 		<tr>
@@ -47,5 +47,19 @@
 			<td>[[${email}]]</td>
 		</tr>
 	</table>
+	
+	<br>
+	
+	<th:block th:if="${genre == 1}">
+		<h2>資料請求はこちら</h2>
+		
+		<ul>
+			<!-- 言語の要素分liタグを生成 -->
+			<li th:each="lang : ${languageList}">
+				<!-- リンクはaタグで、リンクの向き先(href)は要素によって変化させる(動的にする) -->
+				<a th:href="|/training/${lang}|">[[${lang}]]研修</a>
+			</li>
+		</ul>
+	</th:block>
 </body>
 </html>

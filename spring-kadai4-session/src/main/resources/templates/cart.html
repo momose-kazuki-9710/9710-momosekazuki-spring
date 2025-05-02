@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ショッピングカート</title>
+</head>
+<body>
+	<h1>ショッピングカート</h1>
+	
+	<span>
+		こんにちは、[[${@account.name}]]さん
+	</span>
+	
+	<form method="post" action="/cart/add">
+		
+		<input type="text" name="name" placeholder="商品名">
+		<input type="number" name="price" placeholder="価格">
+		
+		<button>カートに追加</button>
+	</form>
+	
+	<br>
+	
+
+	<table border="1" th:if="${@cart.items.size() > 0}" >
+		<tr>
+			<th>商品名</th>
+			<th>価格</th>
+		</tr>
+		<tr th:each="cart:${@cart.items}">
+			<td>
+				[[${cart.name}]]
+			</td>
+			<td>
+				[[${cart.price}]]
+			</td>
+		</tr>
+	</table>
+	
+	<br>
+		<a href="/cart/clear" th:if="${@cart.items.size() > 0}">カートのクリア</a>
+
+	<br>
+		<a href="/cart/logout">ログアウト</a>
+
+</body>
+</html>
