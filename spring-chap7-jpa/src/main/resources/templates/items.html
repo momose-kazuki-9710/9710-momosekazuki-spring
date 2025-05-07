@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+</head>
+<body>
+	
+	<h1>商品一覧</h1>
+	
+	<!-- 商品名の検索フォーム -->
+	<form method="get" action="/items">
+		<input type="text" name="keyword" placeholder="商品名"/>
+		<button>検索</button>
+	</form>
+	
+	<!-- 商品テーブル -->
+	<table border="1">
+		
+		<!-- ヘッダー行 -->
+		<tr>
+			<th>ID</th>
+			<th>商品名</th>
+			<th>値段</th>
+		</tr>
+		
+		<!-- データ一覧 -->
+		<tr th:each="item : ${itemList}">
+			<td>[[${item.id}]]</td>
+			<td>[[${item.name}]]</td>
+			<td>[[${item.price}]]円</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

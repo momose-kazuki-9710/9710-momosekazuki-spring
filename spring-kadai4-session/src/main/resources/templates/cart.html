@@ -20,7 +20,7 @@
 	</form>
 	
 	<br>
-	
+
 
 	<table border="1" th:if="${@cart.items.size() > 0}" >
 		<tr>
@@ -28,6 +28,7 @@
 			<th>価格</th>
 		</tr>
 		<tr th:each="cart:${@cart.items}">
+			<!--{＠～ . 〇} ← どのセクションか . どの要素（中身）-->
 			<td>
 				[[${cart.name}]]
 			</td>

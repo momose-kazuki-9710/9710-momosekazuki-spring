@@ -31,8 +31,6 @@ public class CartController {
 	@GetMapping("/cart")
 	public String showCart() {
 		
-		//ユーザのセッション情報を削除(セッション情報全削除)
-		session.invalidate();
 		
 		return "cart";
 	}
@@ -52,9 +50,10 @@ public class CartController {
 		
 		//セクションスコープに保持されたリストを取得
 		List<Item> allItems= cart.getItems();
-		
 		//受け取ったパラメータをリストに追加
 		allItems.add(new Item(name,price));
+//		Item item1 = new Item(name,price);
+//		allItems.add(item1);
 			
 		return "cart";
 	}
@@ -62,7 +61,8 @@ public class CartController {
 	@GetMapping("/cart/clear")
 	public String clearCart() {
 		
-		session.invalidate();
+		//List型の機能「clear」を使用する
+		cart.getItems().clear();
 		
 		return "cart";
 	}
