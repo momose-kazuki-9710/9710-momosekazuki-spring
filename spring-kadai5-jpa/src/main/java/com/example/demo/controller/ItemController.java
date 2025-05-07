@@ -38,17 +38,17 @@ public class ItemController {
 		List<Category> categoryList = categoryrepository.findAll();
 		model.addAttribute("categoryList", categoryList);
 		
-		List<Item> itemList1 = itemrepository.findAll();
-		
-		if (categoryId == null) {
-			
-			// DBから itemsテーブル のデータを全件取得   →「 .findAll()」
-			itemList = itemrepository.findAll();
-			
-		}
-		else {
+		if (categoryId != null) {
 			
 			itemList = itemrepository.findByCategoryId(categoryId);
+			
+		}
+		else if (maxPrice != null) {
+			itemList = itemrepository.findByMaxPrice(maxPrice);
+		}
+		else {
+			// DBから itemsテーブル のデータを全件取得   →「 .findAll()」
+			itemList = itemrepository.findAll();
 		}
 		
 		

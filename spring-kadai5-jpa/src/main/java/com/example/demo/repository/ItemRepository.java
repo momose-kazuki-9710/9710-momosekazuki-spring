@@ -26,6 +26,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer>{
 	@Query(value=""
 			+"SELECT * "
 			+"FROM items "
-			+"WHERE name price <= ?", nativeQuery = true)
-	List<Item> findByPrice(Integer price);
+			+"WHERE price <= ?1", nativeQuery = true)
+	List<Item> findByMaxPrice(Integer maxPrice);
 }
