@@ -165,12 +165,14 @@ public class ItemController {
 	
 	@GetMapping("/categories")
 	public String categoriesIndex(Model model) {
+		
 		List<Categories> categoryList = new ArrayList<>(); 
-		
 		categoryList = categoriesRepository.findAll();
-		
 		model.addAttribute("categoryList", categoryList);
+
 		return "categories";
 	}
+	
+	
 	
 }

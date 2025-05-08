@@ -5,40 +5,6 @@
 <title>カテゴリー</title>
 </head>
 <body>
-	<h1>商品一覧</h1>
-		
-	<table border="1">
-		<tr>
-			<th>ID</th>
-			<th>名前</th>
-			
-			<!-- 更新用 -->
-			<th>更新</th>
 
-			<!-- 削除用 -->
-			<th>削除</th>
-		</tr>
-		
-		<tr th:each="category:${categoryList}">
-			<td>[[${category.id}]]</td>
-			<td>[[${category.name}]]</td>
-			
-			<!-- 更新用 -->
-			<td>
-				<form method="get" th:action="|/categories/${category.id}/edit|">
-					<button>更新</button>
-				</form>
-			</td>
-
-			<!-- 削除用 -->
-			<td>
-				<form method="post" th:action="|/categories/${category.id}/delete|">
-					<button>削除</button>
-				</form>
-			</td>	
-		</tr>
-	</table>
-
-	<a href="/categories/add" >新規登録</a>
 </body>
 </html>
