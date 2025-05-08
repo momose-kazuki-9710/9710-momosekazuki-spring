@@ -22,6 +22,13 @@
 			<th>ID</th>
 			<th>商品名</th>
 			<th>値段</th>
+			
+			<!-- 更新用の列を追加 -->
+			<th>更新</th>
+			
+			<!-- 削除用の列を追加 -->
+			<th>削除</th>
+			
 		</tr>
 		
 		<!-- データ一覧 -->
@@ -29,8 +36,35 @@
 			<td>[[${item.id}]]</td>
 			<td>[[${item.name}]]</td>
 			<td>[[${item.price}]]円</td>
+			
+			<!-- 更新用の列を追加 -->
+			<td>
+				<!-- ボタンに見える画面転移のリンク -->
+				<!-- 「th:」で動的にする -->
+				
+				<!-- 2種類 -->
+				<!-- aタグでボタンを囲む →画面遷移だけの時はこれでよい -->
+				<a th:href="|/items/${item.id}/edit|">
+					<button>更新</button>
+				</a>
+				
+				<!-- Formタグ (method="get") で囲む →パラメータを埋め込める -->
+				<form method="get" th:action="|/items/${item.id}/edit|">					
+					<button>更新</button>
+				</form> 
+			</td>
+			<td>
+				<!-- 削除用の列を追加  ← methodは「post」 -->
+				<form method="post" th:action="|/items/${item.id}/delete|">					
+					<button>削除</button>
+				</form> 
+			</td>
+			
 		</tr>
 	</table>
+	
+	<!-- 新規登録リンク：URLは/items/add -->
+	<a href="/items/add">新規登録</a>
 	
 </body>
 </html>

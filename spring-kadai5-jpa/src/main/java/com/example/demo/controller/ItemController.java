@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,8 @@ public class ItemController {
 	public String idex(
 			@RequestParam(name = "categoryId", defaultValue="") Integer categoryId, 
 			@RequestParam(name = "maxPrice", defaultValue="") Integer maxPrice, 
+			@RequestParam(name = "sort", defaultValue="") String sort,
+			@RequestParam(name="keyword", defaultValue="") String keyword,
 			Model model) {
 		
 		List<Item> itemList = new ArrayList<>();
@@ -38,20 +41,49 @@ public class ItemController {
 		List<Category> categoryList = categoryrepository.findAll();
 		model.addAttribute("categoryList", categoryList);
 		
+		
 		if (categoryId != null) {
 			
 			itemList = itemrepository.findByCategoryId(categoryId);
 			
 		}
 		else if (maxPrice != null) {
-			itemList = itemrepository.findByMaxPrice(maxPrice);
+			if(sort == null || sort.length() == 0) {
+				itemList = itemrepository.findByMaxPrice(maxPrice);
+			}
+			else {
+				if(sort.equals("priceAsc")) {
+//					// キーワードと最高金額で検索して、ソートする
+					
+					//Sortの機能を使う場合
+					itemList = itemrepository.findByMaxPrice(
+							maxPrice, Sort.by(Sort.Direction.ASC, "price"));
+					
+					//「Query」で記述する場合
+//					itemList = itemrepository.orderByPrice(sort);
+				}
+			}
 		}
+		
+		
+		//キーワード
+		else if (keyword != null && keyword.length() > 0) {
+					//キーワードで絞り込んで取得
+					itemList =itemrepository.findByKeyword("%"+ keyword +"%");
+					
+					//SQL上
+						//SELECT * 
+						//FROME items
+						//WHERE name LIKE '% ～ %'
+		}
+				
 		else {
 			// DBから itemsテーブル のデータを全件取得   →「 .findAll()」
 			itemList = itemrepository.findAll();
 		}
 		
 		
+		model.addAttribute("maxPrice", maxPrice);
 		model.addAttribute("itemList", itemList);
 		return "items";
 	}

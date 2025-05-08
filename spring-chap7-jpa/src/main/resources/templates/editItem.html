@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品更新</title>
+</head>
+<body>
+	<!--  -->
+	
+	<h1>商品更新</h1>
+	
+	<!-- 入力フォーム -->
+<!--	<form method="post" th:action="|/items/${dbData.get().id}/edit|">-->
+	<form method="post" th:action="|/items/${item.id}/edit|">
+		<table border="1">
+			
+			<tr>
+				<th>商品ID</th>
+				<td>[[${item.id}]]</td>
+			</tr>
+						
+			<tr>
+				<th>カテゴリーID</th>
+				<td><input type="number" name="categoryId" th:value="${item.categoryId}"></td>
+			</tr>
+			
+			<tr>
+				<th>商品名</th>
+				<td><input type="text" name="name" th:value="${item.name}"></td>
+			</tr>
+			
+			<tr>
+				<th>値段</th>
+				<td><input type="number" name="price" th:value="${item.price}"></td>
+			</tr>
+			
+		</table>
+		<button>更新</button>
+	</form>
+
+</body>
+</html>
