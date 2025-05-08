@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>カテゴリー</title>
+	<meta charset="UTF-8">	
+	<title>カテゴリー更新</title>
 </head>
 <body>
+	<h1>カテゴリー更新</h1>
+	
+	<form method="post" th:action="|/category/${categories.id}/edit|">
+		<table border="1">	
+			<tr>
+				<th>ID</th>
+				<td>[[${categories.id}]]</td>
+			</tr>
+			
+			<tr>
+				<th>名前</th>
+				<td><input type="text" name="name" th:value="${categories.name}"></td>
+			</tr>
+	
+		</table>
+		<button>更新</button>
+	</form>
 
 </body>
 </html>
