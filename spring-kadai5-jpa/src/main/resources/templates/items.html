@@ -31,7 +31,7 @@
 		
 	
 	<!-- Step4：安い順リンク追加 -->
-	<a href="/items?sort=priceAsc">安い順</a>
+	<a th:href="|/items?sort=priceAsc&keyword=${keyword}&maxPrice=${(maxPrice==null)?'':maxPrice}|">安い順</a>
 		
 	<table border="1">
 		<tr>

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+body{
+	background-color: #eee;
+	text-align: center;
+}
+
+header, nav, footer{
+	color: #fff;
+	background-color: #45496a;
+	padding: 5px auto;
+	margin-bottom: 5px;
+}
+
+header a,
+nav a{
+	color: #fff;
+}
+
+header h1{
+	margin: 10px auto;
+}
+
+main{
+	background-color: #fff;
+	min-height: 50px;
+	padding: 20px;
+}
+
+hr{
+	border: 1px dashed #7d8bae;
+}
+
+table{
+	margin: auto;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+th{
+	color: #fff;
+	background-color: #7d8bae;
+}
+
+td{
+	border: 1px solid #7d8bae;
+}
+
+
+button{
+	margin: 2px;
+	padding: 5px 20px;
+	width: 150px;
+
+	color: #fff;
+	background-color: #e5847b;
+}
+
+button:hover{
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.errorMessage{
+	color: rgb(255, 70, 70);
+}
+
+.order_id{
+	color: #f00;
+	font-weight: bold;
+}

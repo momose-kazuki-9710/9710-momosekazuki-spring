@@ -53,7 +53,6 @@ public class ItemController {
 			}
 			else {
 				if(sort.equals("priceAsc")) {
-//					// キーワードと最高金額で検索して、ソートする
 					
 					//Sortの機能を使う場合
 					itemList = itemrepository.findByMaxPrice(
@@ -63,6 +62,17 @@ public class ItemController {
 //					itemList = itemrepository.orderByPrice(sort);
 				}
 			}
+		}
+		
+		else if(sort.equals("priceAsc")) {
+				
+			//Sortの機能を使う場合
+			itemList = itemrepository.findAll(
+					 Sort.by(Sort.Direction.ASC, "price"));
+				
+			//「Query」で記述する場合
+			//itemList = itemrepository.orderByPrice(sort);
+			
 		}
 		
 		
@@ -82,7 +92,20 @@ public class ItemController {
 			itemList = itemrepository.findAll();
 		}
 		
-		
+//		 if(sort.equals("priceAsc")) {
+//				
+//			//Sortの機能を使う場合
+//			itemList = itemrepository.findByMaxPrice(
+//					maxPrice, Sort.by(Sort.Direction.ASC, "price"));
+//				
+//			//「Query」で記述する場合
+//			//itemList = itemrepository.orderByPrice(sort);			
+//		}
+//		 else {
+//				// DBから itemsテーブル のデータを全件取得   →「 .findAll()」
+//				itemList = itemrepository.findAll();
+//		}
+//		
 		model.addAttribute("maxPrice", maxPrice);
 		model.addAttribute("itemList", itemList);
 		return "items";

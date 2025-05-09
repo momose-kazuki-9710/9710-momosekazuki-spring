@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+	
+	<link rel="styleSheet" href="/css/style.css"/>
+</head>
+<body>
+
+	<!--   -->
+	
+	<header>
+		<h1><a href="/items">サンプルショッピング</a></h1>
+		
+		<!-- セッションを用いた表示  -->
+		[[${@account.name}]]さんがログイン中
+		<!-- ログアウト用リンク  -->
+		<a href="/logout">ログアウト</a>
+	</header>
+	
+	<main>
+		<!-- カテゴリ検索  -->
+		<nav>
+			<!-- 全商品のリンク  -->
+			<a href="/items">全商品</a>
+			
+			
+			<!-- カテゴリ絞り込み用リンク  -->
+	<!--		<a href="/items?categoryId=1">本</a>-->
+	<!--		<a href="/items?categoryId=2">DVD</a>-->
+	<!--		<a href="/items?categoryId=3">ゲーム</a>-->
+	
+			<!-- ＊動的＊-->
+			<th:block th:each="category:${categoryList}">
+				<a th:href="|/items?categoryId=${category.id}|">[[${category.name}]]</a>
+				
+			</th:block>
+	
+			<!--別記述 -->
+			<a th:each="category:${categoryList}"
+			   th:href="@{/items(categoryId=${category.id})}">
+			   [[${category.name}]]
+			</a>		
+	
+	
+		</nav>
+		
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>商品名</th>
+				<th>値段</th>
+				
+				<!--カートに追加用-->
+				<th></th>
+				
+			</tr>
+			<tr th:each="item:${itemList}">
+				<td>[[${item.id}]]</td>
+				<td>[[${item.name}]]</td>
+				<td>[[${item.price}]]</td>
+				
+				<!--カートに追加用-->
+				<td>
+					<form method="post" action="/cart/add">
+						<!-- 隠しパラメータの作成 -->
+						<input type="hidden" name="itemId" th:value="${item.id}">
+						<button>カートに追加</button>
+					</form>				
+				</td>
+					
+				
+			</tr>
+		</table>
+		
+	</main>
+</body>
+</html>

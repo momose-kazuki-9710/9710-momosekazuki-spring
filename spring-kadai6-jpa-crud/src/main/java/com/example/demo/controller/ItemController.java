@@ -204,6 +204,7 @@ public class ItemController {
 			//4.
 			return "redirect:/categories";
 		}
+	
 	//＝＝ 更新準備 ＝＝
 		//更新ボタンを押したとき、更新のためのitemsテーブルにデータを表示する
 		// ＊一連の流れ＊
@@ -292,3 +293,4 @@ public class ItemController {
 		return "redirect:/categories";
 	}
 }
+
