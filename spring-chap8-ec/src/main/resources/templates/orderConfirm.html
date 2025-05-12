@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Cart</title>
+	
+	<link rel="styleSheet" href="/css/style.css">
+</head>
+<body>
+	
+	<!-- ヘッダー  -->
+	<span th:replace="header"></span>
+	
+	<main>
+		<h2>以下の内容で注文を行いますか？</h2>
+		<h2>ご注文商品</h2>
+		<!-- カートの中身のテーブル -->
+		<span th:replace="cartItem"></span>
+		
+		<hr>
+		
+		<h2>お客様情報</h2>
+		<table border="1">
+			<tr>
+				<th>名前</th>
+				<td>[[${name}]]</td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td>[[${address}]]</td>
+			</tr>
+			<tr>
+				<th>電話番号</th>
+				<td>[[${tel}]]</td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td>[[${email}]]</td>
+			</tr>
+		</table>
+		
+		<form method="post" action="/order">
+			<input type="hidden" name="name" th:value="${name}">
+			<input type="hidden" name="address" th:value="${address}">
+			<input type="hidden" name="tel" th:value="${tel}">
+			<input type="hidden" name="email" th:value="${email}">
+			
+			<button>注文する</button>
+		</form>
+	</main>
+
+</body>
+</html>

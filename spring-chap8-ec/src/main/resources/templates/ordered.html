@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>注文完了画面</title>
+	
+	<link rel="styleSheet" href="/css/style.css">
+</head>
+<body>
+	<!-- ヘッダー  -->
+	<span th:replace="header"></span>
+	
+	<main>
+		<h3>ご注文ありがとうございました。</h3>
+		
+		<!-- 受け渡し確認 -->
+<!--		お名前：[[${name}]]</br>-->
+<!--		住所：[[${address}]]</br>-->
+<!--		電話番号：[[${tel}]]</br>-->
+<!--		メールアドレス：[[${email}]]</br>-->
+		
+
+		<p>お客様の注文番号は</p>
+		
+		<h3 th:text="${orderId}" style="color: brown;"></h3>
+		
+		<p>になります。</p>
+	</main>
+
+</body>
+</html>

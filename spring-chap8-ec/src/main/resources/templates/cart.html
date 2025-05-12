@@ -8,31 +8,64 @@
 	
 </head>
 <body>
-	<header>
-	<h1><a href="/items">サンプルショッピング</a></h1>
+	
+	<!-- ヘッダー  -->
+	<span th:replace="header"></span>
+	
+	
+<!--	<header>-->
+<!--	<h1><a href="/items">サンプルショッピング</a></h1>-->
 			
-			<!-- セッションを用いた表示  -->
-			[[${@account.name}]]さんがログイン中
-			<!-- ログアウト用リンク  -->
-			<a href="/logout">ログアウト</a>
-	</header>
+<!--			 セッションを用いた表示  -->
+<!--			[[${@account.name}]]さんがログイン中-->
+<!--			 ログアウト用リンク  -->
+<!--			<a href="/logout">ログアウト</a>-->
+<!--			 カート閲覧用リンク  -->
+<!--			<a href="/cart">カートを見る</a>-->
+<!--	</header>-->
 	
 	<main>
-		<!-- カート用テーブル -->
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>商品名</th>
-				<th>値段</th>
-				<th>個数</th>
-			</tr>
-			<tr th:each="cart: ${@cart.itemList}">
-				<td>[[${cart.id}]]</td>
-				<td>[[${cart.name}]]</td>
-				<td>[[${cart.price}]]</td>
-				<td>[[${cart.quantity}]]</td>
-			</tr>
-		</table>
+<!--		 カート用テーブル -->
+<!--		<table border="1">-->
+<!--			<tr>-->
+<!--				<th>ID</th>-->
+<!--				<th>商品名</th>-->
+<!--				<th>値段</th>-->
+<!--				<th>個数</th>-->
+<!--			</tr>-->
+<!--			<tr th:each="cart: ${@cart.itemList}">-->
+<!--				<td>[${cart.id}]]</td>-->
+<!--				<td>[${cart.name}]]</td>-->
+<!--				<td>[${cart.price}]]</td>-->
+<!--				<td>[${cart.quantity}]]</td>-->
+				
+<!--				 カートの削除 -->
+<!--				<td>-->
+<!--					<form method="post" action="/cart/delete">-->
+<!--						<input type="hidden" name="cartIdDelete">-->
+<!--						<button>削除</button>-->
+<!--					</form>-->
+<!--				</td>-->
+<!--			</tr>-->
+<!--		</table>-->
+		
+
+		<span th:replace="cartItem"></span>
+
+
+		<!-- 注文ボタン（リンク付き2種類） -->
+		<!-- カートの中に商品が存在するときに表示 -->
+		
+		<a href="/order" th:if="${@cart.itemList.size() > 0}">
+			<button>注文する</button>		
+		</a>
+		
+<!--		<form method="get" action="/order">-->
+<!--			<button>注文する</button>		-->
+<!--		</form>-->
+		
+		
+		
 	</main>
 
 </body>

@@ -23,6 +23,22 @@ public class Cart {
 	public List<Item> getItemList() {
 		return itemList;
 	}
+	
+	
+	//合計金額取得用
+	/**
+	 * カート内の商品の合計金額を算出して返却する処理
+	 * @return
+	 */
+	public Integer getTotalPrice() {
+		Integer total = 0;
+		for(Item item : itemList) {
+			total += item.getPrice() * item.getQuantity();
+		}
+		return total;
+	} 
+	
+	
 
 	//メソッド
 	//処理概要：引数に渡された商品をカートに追加
@@ -75,4 +91,37 @@ public class Cart {
 
 		//		itemList.add(item);
 	}
+
+	/**
+	 * 引数で指定された商品を削除する処理
+	 * @param cartIdDelete
+	 */
+	public void delete(Integer cartIdDelete) {
+		//1.
+		//フィールドitemListの中に、引数のitem.idと同じidを持つデータがあるかどうか
+		//保存用変数を作成
+		//Item existItem = null;
+
+		//拡張for文を実施
+		// ↑フィールドitemListの中身を1つずつ確認するため
+		for (Item cartItem : itemList) {
+			//追加しようとしているitemIdとカート内の商品のitemIdが一致した場合
+			if (cartItem.getId() == cartIdDelete) {
+
+				// existItem に cartItem を入れて保存
+				itemList.remove(cartItem);
+
+				// for 文を抜け出す
+				break;
+			}
+		}
+	
+	}
+	
+	public void clear() {
+		itemList = new ArrayList<>();
+	}
+	
+
 }
+

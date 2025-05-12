@@ -1,0 +1,31 @@
+<!-- カート用テーブル -->
+<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>商品名</th>
+		<th>値段</th>
+		<th>個数</th>
+		<th>小計</th>
+		<th></th>
+	</tr>
+	<tr th:each="cart: ${@cart.itemList}">
+		<td>[[${cart.id}]]</td>
+		<td>[[${cart.name}]]</td>
+		<td>[[${cart.price}]]</td>
+		<td>[[${cart.quantity}]]</td>
+		<td>[[${cart.price * cart.quantity}]]</td>
+		
+		<!-- カートの削除 -->
+		<td>
+			<form method="post" action="/cart/delete">
+				<input type="hidden" name="cartIdDelete" th:value="${cart.id}">
+				<button>削除</button>
+			</form>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right" colspan="5">総計：[[${@cart.totalPrice}]]</td>
+		<td></td>
+	</tr>
+</table>

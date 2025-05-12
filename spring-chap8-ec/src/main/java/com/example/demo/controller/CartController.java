@@ -49,5 +49,26 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
+	
+	//カートから削除
+	@PostMapping("/cart/delete")
+		public String delete(
+				@RequestParam(name="cartIdDelete")Integer cartIdDelete) {
+		//削除
+		
+//		//1. 
+//		Optional<Item> dbData = itemRepository.findById(cartIdDelete);
+//		
+//		//2. 
+//		if( !dbData.isEmpty()) {
+//			cart.delete(cartIdDelete);
+//		}
+		
+		cart.delete(cartIdDelete);
+		return "redirect:/cart";
+		}
+	
+	
+
 
 }
