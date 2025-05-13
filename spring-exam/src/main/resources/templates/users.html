@@ -7,7 +7,7 @@
 <body>
 	<h1>顧客一覧</h1>
 	
-<!--	こんにちは、[${@account.name}]]さん-->
+	<div>こんにちは、[[${@account.name}]]さん</div>
 	<!-- 名前の検索フォーム -->
 	<form method="get" action="/users">
 		<input type="text" name="keyword" placeholder="名前" th:value="${keyword}"/>

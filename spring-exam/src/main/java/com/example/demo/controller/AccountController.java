@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -46,33 +45,36 @@ public class AccountController {
 		
 		Account account = new Account(email, password);
 		List<User> userList = new ArrayList<>();
-		userList = userRepository.findAll();
+		userList = userRepository.findByEmailAndPassword(email, password);
 		
-		
-		
-		//for文
-//		for(User user;userList) {
-//			
-//		}
+		if(userList.size() == 0) {
+			model.addAttribute("error", "メールアドレスとパスワードが一致しませんでした");
+			return "login";
+		}
+		else {
+			account.setName(userList.get(0).getName());
+		}
 		
 		return "redirect:/users";
 	}
 	
-	public User checkLogin(String email, String password) {
-		// 顧客データを取得
-		Optional<User> usercheck = userRepository.findByEmailAndPassword(email, password);
-
-		// 顧客データが取得できなかった場合
-		if(usercheck.isEmpty()) {
-			// nullを返却
-			return null;
-		}
-		// 顧客データが取得できた場合
-		else {
-			// 顧客データを返却
-			return usercheck.get();
-		}
 	
-	}
+	//試行錯誤
+//	public User checkLogin(String email, String password) {
+//		// 顧客データを取得
+//		List<User> usercheck = userRepository.findByEmailAndPassword(email, password);
+//
+//		// 顧客データが取得できなかった場合
+//		if(usercheck.isEmpty()) {
+//			// nullを返却
+//			return null;
+//		}
+//		// 顧客データが取得できた場合
+//		else {
+//			// 顧客データを返却
+//			return usercheck.get();
+//		}
+//	
+//	}
 	
 }
