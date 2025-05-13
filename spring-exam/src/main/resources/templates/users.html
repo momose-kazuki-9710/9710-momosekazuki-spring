@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>顧客一覧</title>
+</head>
+<body>
+	<h1>顧客一覧</h1>
+	
+<!--	こんにちは、[${@account.name}]]さん-->
+	<!-- 名前の検索フォーム -->
+	<form method="get" action="/users">
+		<input type="text" name="keyword" placeholder="名前" th:value="${keyword}"/>
+		<button>検索</button>
+	</form>
+	
+	<table border="1">
+		<tr>
+			<th>顧客ID</th>
+			<th>名前</th>
+			<th>メールアドレス</th>
+			<th>パスワード</th>
+			<th>更新</th>
+			<th>削除</th>
+			
+		</tr>
+		<tr th:each="user:${userList}">
+			<td>[[${user.id}]]</td>
+			<td>[[${user.name}]]</td>
+			<td>[[${user.email}]]</td>
+			<td>[[${user.password}]]</td>
+
+			<!-- 更新用 -->
+			<td>
+				<form method="get" th:action="|/users/${user.id}/edit|">
+					<button>更新</button>
+				</form>
+			</td>
+			
+			<!-- 削除用 -->
+			<td>
+				<form method="post" th:action="|/users/${user.id}/delete|">
+					<button>削除</button>
+				</form>
+			</td>
+			
+		</tr>
+	</table>
+	
+	<a href="/users/add">新規登録</a><br>
+	<a href="/logout">ログアウト</a>
+</body>
+</html>

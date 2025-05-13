@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ショッピングカート</title>
+</head>
+<body>
+
+	<h1>ショッピングカート</h1>
+	<form method="post" action="/cart/add">
+		<input type="text" name="name" placeholder="商品名">
+		<input type="number" name="price" placeholder="価格">
+		<button>カートに追加</button>
+	</form>
+	
+	<table border="1" th:if="${name != null}">
+		<tr>
+			<th>商品名</th>
+			<td>[[${name}]]</td>
+		</tr>
+		<tr>
+			<th>価格</th>
+			<td>[[${place}]]</td>
+		</tr>
+	</table>
+</body>
+</html>

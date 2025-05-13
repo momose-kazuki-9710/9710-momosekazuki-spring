@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品登録</title>
+</head>
+<body>
+	<h1>商品登録</h1>
+
+	<form method="post" action="/items/add">
+		<table border="1">
+			<tr>
+				<th>カテゴリーID</th>
+				<td>
+					<input type="number" name="categoryId">
+				</td>
+			</tr>
+			<tr>
+				<th>商品名</th>
+				<td>
+					<input type="text" name="name">
+				</td>
+			</tr>
+			<tr>
+				<th>値段</th>
+				<td>
+					<input type="number" name="price">
+				</td>
+			</tr>
+			
+		</table>
+		<button>登録</button>
+	</form>
+</body>
+</html>

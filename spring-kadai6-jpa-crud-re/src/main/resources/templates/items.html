@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+</head>
+<body>
+	<h1>商品一覧</h1>
+	
+	
+	<!-- 商品名の検索フォーム -->
+	<form method="get" action="/items">
+		商品名<input type="text" name="keyword" placeholder="商品名"/>
+		<button>検索</button>
+	</form>
+
+	<form method="get" action="/items">
+		<input type="number" name="maxPrice"  th:value="${maxPrice}" >円以下
+		<button>検索</button>
+	</form>
+	
+	
+	<!-- 絞り込みリンク -->
+	<a href="/items">全商品</a>
+	
+	<th:block th:each="category:${categoryList}">
+		<a th:href="|/items?categoryId=${category.id}|">[[${category.name}]]</a>
+	</th:block>
+	
+	<!-- Step4：安い順リンク追加 -->
+	<a th:href="|/items?sort=priceAsc&keyword=${keyword}&maxPrice=${(maxPrice==null)?'':maxPrice}|">安い順</a>
+
+	
+	<!-- 一覧 -->
+	<table border="1">
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>値段</th>
+			
+			<!-- 更新用 -->
+			<th>更新</th>
+			
+			<!-- 削除用 -->
+			<th>削除</th>
+		</tr>
+		
+		<tr th:each="item:${itemList}">
+			<td>[[${item.id}]]</td>
+			<td>[[${item.name}]]</td>
+			<td>[[${item.price}]]</td>
+			
+			<!-- 更新用 -->
+			<td>
+				<form method="get" th:action="|/items/${item.id}/edit|">
+					<button>更新</button>
+				</form>
+			</td>
+			
+			<!-- 削除用 -->
+			<td>
+				<form method="post" th:action="|/items/${item.id}/delete|">
+					<button>削除</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+
+	<a href="/items/add">新規登録</a>
+</body>
+</html>
